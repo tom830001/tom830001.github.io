@@ -1,7 +1,221 @@
+<!doctype html>
 <html>
-<head>
-</head>
-<body>
-    HELLO!
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+    <title>Blog Template</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <meta property="og:type" content="" /> 
+    <meta property="og:url" content="" /> 
+    <meta property="og:title" content="" /> 
+    <meta property="og:image" content="" /> 
+    <meta property="og:description" content="" />
+    <meta name="twitter:site" content="">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./styles/styles.css" rel="stylesheet">
+	
+<script type="text/javascript" >
+
+	var tmp = (+new Date());
+	var newDate = (new Date());
+function timeStamp2String (time){
+        var datetime = new Date();
+         datetime.setTime(time);
+         var year = datetime.getFullYear();
+         var month = datetime.getMonth() + 1;
+         var date = datetime.getDate();
+         var hour = datetime.getHours();
+         var minute = datetime.getMinutes();
+         var second = datetime.getSeconds();
+         var mseconds = datetime.getMilliseconds();
+         return year + "-" + month + "-" + date;
+};
+
+	
+	/*var date = new Date(formatDate(newDate)); //时间对象
+	var str = date.getTime(); //转换成时间戳*/
+	
+	
+	function hello() {
+		hello1();
+		hello2();
+		hello3();
+	}
+
+	function hello1() {
+		$.getJSON("https://cors-anywhere.herokuapp.com/https://sleague.tw/jsons/games/1/17/65/66/2580/game.json?nocache="+tmp, function(json) {
+			$('#jsonTable1').css("visibility", "visible").css("border", "1px solid green").css("font-size", "24");
+			$('#jsonTable1').append("<tbody>");
+			$('#jsonTable1').append("<tr><td>" + timeStamp2String(json.playDate) + "</td><td>" + json.playTime + "</td><td>" + json.teamGuest.name + "</td><td>"+ json.teamGuestRecord.scoreQ1 + "</td><td>" + json.teamGuestRecord.scoreQ2 + "</td><td>" + json.teamGuestRecord.scoreQ3 + "</td><td>" + json.teamGuestRecord.scoreQ4 + "</td><td>" + json.teamGuestRecord.score + "</td></tr>");
+			$('#jsonTable1').append("<tr><td>" + timeStamp2String(json.playDate) + "</td><td>" + json.playTime + "</td><td>" + json.teamHome.name + "</td><td>"+ json.teamHomeRecord.scoreQ1 + "</td><td>" + json.teamHomeRecord.scoreQ2 + "</td><td>" + json.teamHomeRecord.scoreQ3 + "</td><td>" + json.teamHomeRecord.scoreQ4 + "</td><td>" + json.teamHomeRecord.score + "</td></tr>");
+			$('#jsonTable1').append("</tbody>");
+			$('th').css("border", "1px solid green");
+		});
+	}
+	function hello2() {
+		$.getJSON("https://cors-anywhere.herokuapp.com/https://sleague.tw/jsons/games/1/17/65/66/2581/game.json?nocache="+tmp, function(json) {
+			$('#jsonTable2').css("visibility", "visible").css("border", "1px solid green").css("font-size", "24");
+			$('#jsonTable2').append("<tbody>");
+			$('#jsonTable2').append("<tr><td>" + timeStamp2String(json.playDate) + "</td><td>" + json.playTime + "</td><td>" + json.teamGuest.name + "</td><td>"+ json.teamGuestRecord.scoreQ1 + "</td><td>" + json.teamGuestRecord.scoreQ2 + "</td><td>" + json.teamGuestRecord.scoreQ3 + "</td><td>" + json.teamGuestRecord.scoreQ4 + "</td><td>" + json.teamGuestRecord.score + "</td></tr>");
+			$('#jsonTable2').append("<tr><td>" + timeStamp2String(json.playDate) + "</td><td>" + json.playTime + "</td><td>" + json.teamHome.name + "</td><td>"+ json.teamHomeRecord.scoreQ1 + "</td><td>" + json.teamHomeRecord.scoreQ2 + "</td><td>" + json.teamHomeRecord.scoreQ3 + "</td><td>" + json.teamHomeRecord.scoreQ4 + "</td><td>" + json.teamHomeRecord.score + "</td></tr>");
+			$('#jsonTable2').append("</tbody>");
+			$('th').css("border", "1px solid green");
+		});
+	}
+	function hello3() {
+		$.getJSON("https://cors-anywhere.herokuapp.com/https://sleague.tw/jsons/games/1/17/65/66/2582/game.json?nocache="+tmp, function(json) {
+			$('#jsonTable3').css("visibility", "visible").css("border", "1px solid green").css("font-size", "24");
+			$('#jsonTable3').append("<tbody>");
+			$('#jsonTable3').append("<tr><td>" + timeStamp2String(json.playDate) + "</td><td>" + json.playTime + "</td><td>" + json.teamGuest.name + "</td><td>"+ json.teamGuestRecord.scoreQ1 + "</td><td>" + json.teamGuestRecord.scoreQ2 + "</td><td>" + json.teamGuestRecord.scoreQ3 + "</td><td>" + json.teamGuestRecord.scoreQ4 + "</td><td>" + json.teamGuestRecord.score + "</td></tr>");
+			$('#jsonTable3').append("<tr><td>" + timeStamp2String(json.playDate) + "</td><td>" + json.playTime + "</td><td>" + json.teamHome.name + "</td><td>"+ json.teamHomeRecord.scoreQ1 + "</td><td>" + json.teamHomeRecord.scoreQ2 + "</td><td>" + json.teamHomeRecord.scoreQ3 + "</td><td>" + json.teamHomeRecord.scoreQ4 + "</td><td>" + json.teamHomeRecord.score + "</td></tr>");
+			$('#jsonTable3').append("</tbody>");
+			$('th').css("border", "1px solid green");
+		});
+	}
+
+	
+</script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>		
+	
+  </head>
+<meta http-equiv="refresh" content="10" />
+  <body onload="hello()"> 
+ 
+  
+<table id="jsonTable1"width="10%" border=1 style="display:inline">
+<thead>
+			<tr>
+				<th>DATE</th>
+				<th>TIME</th>
+				<th>NAME</th>
+				<th>Q1</th>
+				<th>Q2</th>
+				<th>Q3</th>
+				<th>Q4</th>
+				<th>total</th>
+			</tr>
+		</thead>
+</table>
+<table id="jsonTable2"width="10%" border=1 style="display:inline">
+<thead>
+			<tr>
+				<th>DATE</th>
+				<th>TIME</th>
+				<th>NAME</th>
+				<th>Q1</th>
+				<th>Q2</th>
+				<th>Q3</th>
+				<th>Q4</th>
+				<th>total</th>
+			</tr>
+		</thead>
+</table>
+
+<table id="jsonTable3"width="10%" border=1 style="display:inline">
+<thead>
+			<tr>
+				<th>DATE</th>
+				<th>TIME</th>
+				<th>NAME</th>
+				<th>Q1</th>
+				<th>Q2</th>
+				<th>Q3</th>
+				<th>Q4</th>
+				<th>total</th>
+			</tr>
+		</thead>
+</table>
+
+
+
+
+    <div class="section-blog-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <h3>@@</h3>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12">
+            <div class="articles">
+                
+              <div class="article">
+                <a href="./post.html">
+                  <img src="https://d2devwt40at1e2.cloudfront.net/api/file/tdt3s1OHRO6wfQOpmAHw" width="100%">
+                </a>
+                <div class="inner">
+                  <h3><a href="./post.html">Article title</a></h3>
+                </div>
+              </div>
+
+              <div class="article">
+                <a href="./post.html">
+                  <img src="https://d2devwt40at1e2.cloudfront.net/api/file/tdt3s1OHRO6wfQOpmAHw" width="100%">
+                </a>
+                <div class="inner">
+                  <h3><a href="./post.html">Article title</a></h3>
+                </div>
+              </div>
+
+              <div class="article">
+                <a href="./post.html">
+                  <img src="https://d2devwt40at1e2.cloudfront.net/api/file/tdt3s1OHRO6wfQOpmAHw" width="100%">
+                </a>
+                <div class="inner">
+                  <h3><a href="./post.html">Article title</a></h3>
+                </div>
+              </div>
+
+              <div class="article">
+                <a href="./post.html">
+                  <img src="https://d2devwt40at1e2.cloudfront.net/api/file/tdt3s1OHRO6wfQOpmAHw" width="100%">
+                </a>
+                <div class="inner">
+                  <h3><a href="./post.html">Article title</a></h3>
+                </div>
+              </div>
+
+              <div class="article">
+                <a href="./post.html">
+                  <img src="https://d2devwt40at1e2.cloudfront.net/api/file/tdt3s1OHRO6wfQOpmAHw" width="100%">
+                </a>
+                <div class="inner">
+                  <h3><a href="./post.html">Article title</a></h3>
+                </div>
+              </div>
+
+              <div class="article">
+                <a href="./post.html">
+                  <img src="https://d2devwt40at1e2.cloudfront.net/api/file/tdt3s1OHRO6wfQOpmAHw" width="100%">
+                </a>
+                <div class="inner">
+                  <h3><a href="./post.html">Article title</a></h3>
+                </div>
+              </div>
+
+            </div>
+            <div class="pagination-links">                
+              <span class="pagination-link">&larr; Newer posts</span>
+              <span class="pagination-link"><a href="#">Older posts &rarr;</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
