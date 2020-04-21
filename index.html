@@ -31,7 +31,7 @@
 			$('#jsonTable1').css("visibility", "visible").css("border", "1px solid green").css("font-size", "24");
 			$('#jsonTable1').append("<tbody>");
 			$('#jsonTable1').append("<tr><td>" + timeStamp2String(json.playDate)+" "+json.playTime + "</td></tr>");
-			$('#jsonTable1').append("<tr><td>" + json.teamGuestRecord.team.name + "</td><td>" + "     " + "</td><td>" + json.teamHomeRecord.team.name +  "</td></tr>");
+			$('#jsonTable1').append("<tr><td>" + json.teamGuestRecord.team.name + "</td><td>" + "" + "</td><td>" + json.teamHomeRecord.team.name +  "</td></tr>");
 			$('#jsonTable1').append("</tbody>");
 			$('th').css("border", "1px solid green");
 			console.log(json.teamGuest.name);
