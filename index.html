@@ -32,7 +32,7 @@
 			$('#jsonTable1').css("visibility", "visible").css("border", "1px solid green").css("font-size", "24");
 			$('#jsonTable1').append("<tbody>");
 			$('#jsonTable1').append("<tr><td>" + timeStamp2String(json.playDate)+" "+json.playTime + "</td></tr>");
-			$('#jsonTable1').append("<tr><td>" + json.teamGuestRecord.team.name +"</td><td>" + " " + "</td><td>" + json.teamHomeRecord.team.name +  "</td></tr>");
+			$('#jsonTable1').append("<tr><td>" + json.teamGuestRecord.team.name + "</td><td>" + json.teamHomeRecord.team.name +  "</td></tr>");
 			$('#jsonTable1').append("</tbody>");
 			$('th').css("border", "1px solid green");
 			console.log(json.teamGuest.name);
@@ -42,6 +42,7 @@
 	// Logout
 	function Showtime() {
 		var d = new Date()
+		tmp = (+new Date());
 		console.log(d);
 		$("#date").val(d);
 		
@@ -49,7 +50,6 @@
 			$("#team1").val(json.teamGuestRecord.score);
 			$("#team2").val(json.teamHomeRecord.score);
 		});
-		
 		setTimeout('Showtime()',1000);
 	}
 
@@ -103,11 +103,11 @@
 <body onload="all()">
 date: <input id="date" input style="width:350px"/><p>
 
-<table id="jsonTable1"width="20%"><p>
-<a><img src="台灣啤酒.png" width="50" height="50"></a>
+<table id="jsonTable1"width="15%"><p>
+<a><img src="裕隆納智捷.png" width="50" height="50"></a>
 team1: <input id="team1" input style="width:50px"/>
 team2: <input id="team2" input style="width:50px"/>
-<a><img src="裕隆納智捷.png" width="50" height="50"></a>
+<a><img src="台灣啤酒.png" width="50" height="50"></a>
 <p>
 
 
