@@ -77,11 +77,6 @@
 	  if (this.readyState === 4) {
 		/*console.log(this.responseText);*/
 		return_value = JSON.parse(this.responseText);
-		$("#token").val(return_value.result.credentials.sessionId);
-		$("#GetFeed").val("https://my1032.geotab.com/apiv1/GetFeed?credentials={"database":"amit_1","sessionId":""+return_value.result.credentials.sessionId+"","userName":"tom_li@amit.com.tw"}&typeName=LogRecord&resultsLimit=10&search={"deviceSearch":{"id":"b4"}}");
-		$("#Authenticate").val("https://my1032.geotab.com/apiv1/Authenticate?password=ANan5459@amit.com.tw&userName=tom_li@amit.com.tw&database=AMIT_1");
-		$("#Add").val("https://my1032.geotab.com/apiv1/Add?typeName=Device&entity={"serialNumber":"GT970000006A","Name":"My%20First%20car"}&credentials={"database":"amit_1","username":"tom_li@amit.com.tw","password":"ANan5459@amit.com.tw"}");
-		
 		}
 	});
 
