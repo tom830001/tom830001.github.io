@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Real_Time_Score(SBL and CPBL)</title>
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="../css/tests.css">
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="../../../dist/js/epoch.js"></script>
+	<script src="../js/data.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../../dist/css/epoch.css">
+	<style>
+	</style>
+</head>
+<meta name=”viewport” content=”width=device-width, initial-scale=1.0″>
+<script>
+	var tmp = (+new Date());
+	var home_score;
+	var guest_score;
+	function timeStamp2String (time){
+	        var datetime = new Date();
+	         datetime.setTime(time);
+	         var year = datetime.getFullYear();
+	         var month = datetime.getMonth() + 1;
+	         var date = datetime.getDate();
+	         var hour = datetime.getHours();
+	         var minute = datetime.getMinutes();
+	         var second = datetime.getSeconds();
+	         var mseconds = datetime.getMilliseconds();
+	         return year + "-" + month + "-" + date;
+	};
+	
+	function all() {
+		
+		Showtime();
+		Showscore();
+		Showname();
+	}
+	
+	function Showname() {
+	tmp = (+new Date());
+		$.getJSON("https://cors-anywhere.herokuapp.com/https://sleague.tw/jsons/games/1/17/65/66/2588/game.json?nocache="+tmp, function(json) {
+			$('#jsonTable1').css("visibility", "visible").css("border", "1px solid green").css("font-size", "24");
+			$('#jsonTable1').append("<tbody>");
+			$('#jsonTable1').append("<tr><td>" + timeStamp2String(json.playDate)+" "+json.playTime + "</td></tr>");
+			$('#jsonTable1').append("<tr><td>" + json.teamGuestRecord.team.name + "</td><td>" + json.teamHomeRecord.team.name +  "</td></tr>");
+			$('#jsonTable1').append("</tbody>");
+			$('th').css("border", "1px solid green");
+			console.log(json.teamGuestRecord.team.name);
+		});
+		setTimeout('Showname()',86400000);
+		
+	}
+	// Logout
+	function Showtime() {
+		var d = new Date()
+		tmp = (+new Date());
+		$("#date").val(d);
+		setTimeout('Showtime()',1000);
+	}
+	function Showscore() {
+		tmp = (+new Date());
+		
+		$.getJSON("https://cors-anywhere.herokuapp.com/https://sleague.tw/jsons/games/1/17/65/66/2588/game.json?nocache="+tmp, function(json) {
+			$("#team1").val(json.teamGuestRecord.score);
+			$("#team2").val(json.teamHomeRecord.score);
+			guest_score = json.teamGuestRecord.score;
+			home_score = json.teamHomeRecord.score;
+			if(json==null)
+			{
+				console.log("request failed");
+			}
+		});
+		setTimeout('Showscore()',5000);
+		
+	}
+
+	// Get current user and prints its name to log
+
+	// execute when DOM ready
+	/*$(document).ready(function(){
+
+	
+	}
+	);*/
+	
+	$(function() {
+	var data = [
+			{label: 'A', values: []},
+			{label: 'B', values: []},
+		],
+		length = 40,
+		nextIndex = length,
+		scale = 0.1,
+		playing = false,
+		interval = null;
+
+	for (var i = 0; i < length; i++) {
+		var x = (i+1) * scale,
+			time = nextTime();
+		data[0].values.push({time: time, y: x});
+		data[1].values.push({time: time, y: x * Math.log(x)});
+	}
+
+	var chart = $('#test-6 .epoch').epoch({
+		type: 'time.line',
+		data: data,
+		axes: ['right', 'bottom']
+	});
+
+	var pushPoint = function() {
+		var x = (nextIndex +1) * scale,
+			time = nextTime();
+		chart.push([
+			{ time: time, y: home_score},
+			{ time: time, y: guest_score},
+		]);
+		nextIndex++;
+	};
+
+	$('#test-6 button').on('click', function(e) {
+		if (playing) {
+			$(e.target).text('Play');
+			clearInterval(interval);
+		}
+		else {
+			$(e.target).text('Pause');
+			interval = setInterval(pushPoint, 1000);
+			pushPoint();
+		}
+		playing = !playing;
+	});
+});
+	</script>
+<body onload="all()">
+
+date: <input id="date" input style="width:350px"/><p>
+
+<table id="jsonTable1"width="15%"><p>
+<a><img src="裕隆納智捷.png" width="50" height="50"></a>
+team1: <input id="team1" input style="width:50px"/>
+team2: <input id="team2" input style="width:50px"/>
+<a><img src="台灣啤酒.png" width="50" height="50"></a>
+<p>
+
+
+<a href="./CPBL/index.php">CPBL 職棒</a>
+
+<p>
+
+
+        <div id="test-6" class="test">
+            <h2>圖表</h2>
+          
+            <div class="epoch"></div>
+            <p><button>Play</button></p>
+        </div>
+
+</body>
+</html>
